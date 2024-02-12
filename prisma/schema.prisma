@@ -16,17 +16,8 @@ model User {
   lastName   String
   password   String
   phone      String   @unique
+  role       String   @default("user")
   status     Boolean  @default(true)
-  role       Role?    @relation(fields: [roleId], references: [id])
-  roleId     String
   superAdmin Boolean  @default(false)
   createdAt  DateTime @default(now())
-}
-
-model Role {
-  id          String   @id @default(uuid())
-  name        String
-  description String
-  createdAt   DateTime @default(now())
-  user        User[]
 }
