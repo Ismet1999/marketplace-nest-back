@@ -8,17 +8,7 @@ import {
   Param,
   Post,
   Put,
-  Patch,
-  UseGuards,
-  UsePipes,
-  ValidationPipe,
-  UseInterceptors,
-  UploadedFile,
-  ParseFilePipe,
-  MaxFileSizeValidator,
-  FileTypeValidator,
   Query,
-  ParseArrayPipe,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,

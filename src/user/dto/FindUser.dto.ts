@@ -1,13 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  ArrayMinSize,
-  IsArray,
-  IsBoolean,
-  IsEnum,
-  IsOptional,
-  IsString,
-  IsStrongPassword,
-} from 'class-validator';
+import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator';
 import { ROLES } from '../user.utils';
 
 // export class UpdateUserDto extends CreateUserDto {}

@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/CreateUser.dto';
 import { HashService } from './hash.service';
-import { ROLES } from './user.utils';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { User, Prisma } from '@prisma/client';
+import { User } from '@prisma/client';
 import { UpdateUserDto } from './dto/UpdateUser.dto';
 import { FindUserDto } from './dto/FindUser.dto';
 
@@ -29,12 +28,8 @@ export class UserService {
     return this.prisma.user.findMany({
       where: {
         ...where,
-        firstName: {
-          contains: where.firstName,
-        },
-        phone: {
-          contains: where.phone,
-        },
+        firstName: { contains: where.firstName },
+        phone: { contains: where.phone },
       },
     });
   }
