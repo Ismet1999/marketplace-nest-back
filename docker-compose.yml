@@ -1,0 +1,50 @@
+version: '3.2'
+
+services:
+  # prisma-migrate:
+  #   container_name: prisma-migrate
+  #   build:
+  #     context: .
+  #     dockerfile: DockerfilePrisma
+  #   env_file:
+  #     - .env
+  #   environment:
+  #     DB_HOST: ${DB_HOST}
+  #   networks:
+  #     - webnet
+  #   depends_on:
+  #     - postgres
+  
+  postgres:
+    image: postgres:latest
+    restart: always
+    networks:
+      - webnet
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "${DB_USERNAME}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "${DB_NAME}"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    # volumes:
+    #   - ./data:/data/db
+
+  # node:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 3001:3001
+  #   networks:
+  #     - webnet
+  #   volumes:
+  #     - ./uploads:/app/uploads
+  #   depends_on:
+  #     - prisma-migrate
+
+
+networks:
+  webnet:
